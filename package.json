@@ -9,7 +9,7 @@
   "author": "fahim.chowdhury1985@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "canvas": "^2.8.0",
+    "canvas": "^2.6.1",
     "moment": "^2.29.1",
     "tesseract.js": "^2.1.1"
   }

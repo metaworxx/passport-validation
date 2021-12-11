@@ -1,9 +1,7 @@
-const canvas = require("canvas");
-const fs = require("fs");
 const { Image, createCanvas } = require("canvas");
 class PassportMRZ {
-  constructor() {
-    this.canvas = createCanvas(600, 600);
+  constructor(canvas) {
+    this.canvas = canvas ? canvas : require("canvas").createCanvas(600, 600);
     this.context = this.canvas.getContext("2d");
     this.imageElement = null;
   }

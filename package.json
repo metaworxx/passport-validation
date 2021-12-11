@@ -1,16 +1,28 @@
 {
-  "name": "passport-validation",
+  "name": "@metaworx/passport-validation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "fahim.chowdhury1985@gmail.com",
+  "author": "metaworx",
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.8.0",
     "moment": "^2.29.1",
     "tesseract.js": "^2.1.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metaworxx/passport-validation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/metaworxx/passport-validation/issues"
+  },
+  "homepage": "https://github.com/metaworxx/passport-validation#readme"
 }

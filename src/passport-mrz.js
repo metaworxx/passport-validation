@@ -12,33 +12,37 @@ class PassportMRZ {
     this.imageElement.src = imageBuffer;
   }
   onImageLoaded = () => {
-    const ratio = this.imageElement.width / this.imageElement.height;
-    const width = this.canvas.width;
+    this.imageToMRZ(this.imageElement, this.canvas, this.callback);
+  };
+  imageToMRZ = (image, canvas, callback, _newCanvas) => {
+    const context = canvas.getContext("2d");
+    const ratio = image.width / image.height;
+    const width = canvas.width;
     const height = width / ratio;
-    this.context.drawImage(this.imageElement, 0, 0, width, height);
+    context.drawImage(image, 0, 0, width, height);
     console.log("width", width, 125);
     console.log("height", height, 23.2);
     const diff = width / 125;
     const mrzHeight = 23.2 * diff;
-    this.context.beginPath();
-    this.context.strokeStyle = "#FF0000";
-    this.context.rect(0, height - mrzHeight, width, mrzHeight);
-    this.context.stroke();
+    context.beginPath();
+    context.strokeStyle = "#FF0000";
+    context.rect(0, height - mrzHeight, width, mrzHeight);
+    context.stroke();
 
-    const imageData = this.context.getImageData(
+    const imageData = context.getImageData(
       0,
       height - mrzHeight,
       width,
       mrzHeight
     );
 
-    const newCanvas = createCanvas(width, mrzHeight);
+    const newCanvas = _newCanvas ? _newCanvas : createCanvas(width, mrzHeight);
     const newContext = newCanvas.getContext("2d");
     newCanvas.width = width;
     newCanvas.height = mrzHeight;
     newContext.putImageData(imageData, 0, 0);
 
-    this.callback(newCanvas.toBuffer());
+    callback(_newCanvas ? _newCanvas : newCanvas.toBuffer());
   };
 }
 

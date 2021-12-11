@@ -1,6 +1,6 @@
 const { readFileSync } = require("fs");
 const { resolve } = require("path");
-const PassportValidation = require("..");
+const PassportValidation = require("../src/passport-validation");
 const PassportImageValidation = require("../src/passport-image-validation");
 const PassportMRZ = require("../src/passport-mrz");
 

@@ -8,14 +8,22 @@ class PassportValidation {
   }
   async process() {
     return new Promise((resolve) => {
-      const passportMRZ = new PassportMRZ();
-      passportMRZ.getMRZ(this.info.image, (mrzBuffer) => {
+      if (this.info.alreadyProcessed) {
         const passportValidation = new PassportImageValidation();
         passportValidation.process({
-          image: mrzBuffer,
+          image: this.info.image,
           success: (result) => this.checkDetails(result, resolve),
         });
-      });
+      } else {
+        const passportMRZ = new PassportMRZ();
+        passportMRZ.getMRZ(this.info.image, (mrzBuffer) => {
+          const passportValidation = new PassportImageValidation();
+          passportValidation.process({
+            image: mrzBuffer,
+            success: (result) => this.checkDetails(result, resolve),
+          });
+        });
+      }
     });
   }
   sendResponse(hasPassed, message, result, callback) {

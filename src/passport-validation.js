@@ -1,5 +1,5 @@
-const PassportImageValidation = require("./src/passport-image-validation");
-const PassportMRZ = require("./src/passport-mrz");
+const PassportImageValidation = require("./passport-image-validation");
+const PassportMRZ = require("./passport-mrz");
 const moment = require("moment");
 
 class PassportValidation {
